@@ -1,13 +1,14 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface OrderItem {
-  productId: mongoose.Types.ObjectId;
+  _id: mongoose.Types.ObjectId;
   quantity: number;
   price: number;
+  image:string
 }
 
 export interface OrderDocument extends Document {
-  userId: mongoose.Types.ObjectId;
+  userId: string
   items: OrderItem[];
   totalAmount: number;
   paymentStatus: "PENDING" | "PAID" | "FAILED";
@@ -17,12 +18,12 @@ export interface OrderDocument extends Document {
 const orderSchema = new Schema<OrderDocument>(
   {
     userId: {
-      type: Schema.Types.ObjectId,
+      type: String,
       required: true,
     },
     items: [
       {
-        productId: {
+        _id: {
           type: Schema.Types.ObjectId,
           ref: "Product",
           required: true,
@@ -36,6 +37,10 @@ const orderSchema = new Schema<OrderDocument>(
           type: Number,
           required: true,
         },
+        image: {
+          type: String,
+          required:true
+        }
       },
     ],
     totalAmount: {

@@ -16,6 +16,9 @@ export const getProductsController = asyncHandler(async (req: Request, res: Resp
 export const paymentController = asyncHandler(async (req: Request, res: Response) => {
   const { orders, totalAmount } = req.body;
 
+  console.log(req.body);
+  
+
   if (!orders || orders.length === 0) {
     return res.status(400).json({
       message: "No orders found",
