@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const CartPage = () => {
-  const { cartItems, removeFromCart, totalPrice } = useCart();
+  const { cartItems, removeFromCart, totalPrice, clearCart } = useCart();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -32,6 +32,7 @@ const CartPage = () => {
 
       // success → navigate to order success page
       navigate("/order-success", { state: { order: data.order } });
+      clearCart();
     } catch (error: any) {
       alert(error.message);
     } finally {
@@ -52,29 +53,17 @@ const CartPage = () => {
           ) : (
             <>
               {cartItems.map((item) => (
-                <div
-                  key={item._id}
-                  className="flex justify-between items-center border-b py-3"
-                >
+                <div key={item._id} className="flex justify-between items-center border-b py-3">
                   <div>
-                    <img
-                      src={item.image}
-                      alt=""
-                      className="w-10 h-10"
-                    />
-                    <p className="text-sm text-gray-500">
-                      Qty: {item.quantity}
-                    </p>
+                    <img src={item.image} alt="" className="w-10 h-10" />
+                    <p className="text-sm text-gray-500">Qty: {item.quantity}</p>
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <p className="font-semibold">
-                      ₹{item.price * item.quantity}
-                    </p>
+                    <p className="font-semibold">₹{item.price * item.quantity}</p>
                     <button
                       onClick={() => removeFromCart(item._id)}
-                      className="text-red-500 text-sm"
-                    >
+                      className="text-red-500 text-sm">
                       Remove
                     </button>
                   </div>
@@ -89,8 +78,7 @@ const CartPage = () => {
               <button
                 className="w-full bg-black text-white py-2 mt-6 rounded disabled:opacity-50"
                 onClick={handlePayment}
-                disabled={loading}
-              >
+                disabled={loading}>
                 {loading ? "Processing Payment..." : "Checkout"}
               </button>
             </>
