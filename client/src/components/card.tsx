@@ -1,14 +1,21 @@
 import { BsFillCartPlusFill } from "react-icons/bs";
+import { useCart } from "../context/contextProvider";
 
 type Props = {
   product: {
     name: string;
     price: number;
     image: string;
+    _id: string;
   };
 };
 
 const Card = ({ product }: Props) => {
+  const { addToCart } = useCart();
+
+  console.log(product);
+
+  const { name, image, _id, price } = product;
   return (
     <div className="block max-w-[18rem] rounded-lg shadow-lg">
       <div className="relative  bg-cover bg-no-repeat w-full">
@@ -18,7 +25,9 @@ const Card = ({ product }: Props) => {
         <p className="text-base font-semibold">{product.name}</p>
         <div className="flex justify-between items-center">
           <p>{product.price}</p>
-          <BsFillCartPlusFill size={25} />
+          <button onClick={() => addToCart({ name, image, _id, price })}>
+            <BsFillCartPlusFill size={25} />
+          </button>
         </div>
       </div>
     </div>
