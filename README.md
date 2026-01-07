@@ -28,7 +28,6 @@ This project intentionally avoids real payment gateways. Instead, it **simulates
 4. Payment status is marked as **PAID** (dummy)
 5. User is redirected to **Order Success** page
 
-> This mirrors how real ecommerce platforms work internally and is ideal for interview demonstrations.
 
 ---
 
