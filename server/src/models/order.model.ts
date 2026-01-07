@@ -58,5 +58,5 @@ const orderSchema = new Schema<OrderDocument>(
   }
 );
 
-const Order = mongoose.model<OrderDocument>("Order", orderSchema);
-export default Order;
+const OrderModel = mongoose.model<OrderDocument>("Order", orderSchema);
+export default OrderModel
