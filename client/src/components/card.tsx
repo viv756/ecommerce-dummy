@@ -13,8 +13,6 @@ type Props = {
 const Card = ({ product }: Props) => {
   const { addToCart } = useCart();
 
-  console.log(product);
-
   const { name, image, _id, price } = product;
   return (
     <div className="block max-w-[18rem] rounded-lg shadow-lg">
@@ -24,7 +22,7 @@ const Card = ({ product }: Props) => {
       <div className="p-6 flex flex-col gap-4">
         <p className="text-base font-semibold">{product.name}</p>
         <div className="flex justify-between items-center">
-          <p>{product.price}</p>
+          <p>${product.price}</p>
           <button onClick={() => addToCart({ name, image, _id, price })}>
             <BsFillCartPlusFill size={25} />
           </button>

@@ -5,12 +5,10 @@ const OrderSuccess = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-2xl font-bold mb-2">
-        Payment Successful 🎉
-      </h1>
-      <p className="text-gray-600">
-        Order ID: {state?.order?._id}
-      </p>
+      <div className="bg-green-700 h-50 w-80 p-5 rounded-2xl text-center justify-center flex flex-col">
+        <h1 className="text-2xl font-bold mb-2 text-white">Payment Successful 🎉</h1>
+        <p className="text-white">Order ID: {state?.order?._id}</p>
+      </div>
     </div>
   );
 };
