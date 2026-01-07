@@ -44,7 +44,7 @@ const CartPage = () => {
       <Navbar />
 
       <div className="flex justify-center pt-10">
-        <div className="w-[500px] border rounded p-6">
+        <div className="w-125 border rounded p-6">
           <h2 className="text-xl font-semibold mb-4">Your Cart</h2>
 
           {cartItems.length === 0 ? (
